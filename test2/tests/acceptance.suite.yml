@@ -8,9 +8,10 @@ actor: AcceptanceTester
 modules:
     enabled:
         - WebDriver:
+            url: https://yandex.ru
         - \Helper\Acceptance
     config:
       WebDriver:
-        url: http://localhost
         browser: chrome
         port: 9515
+        wait: 1

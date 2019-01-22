@@ -5,5 +5,5 @@
 
 ### Usage: ###
 
-* *php seoCheck.php* for run against seoExample.csv
-* *php seoCheck.php -f /path/to/your/file.csv* to run against your *.csv file 
+* `php seoCheck.php` for run against seoExample.csv
+* `php seoCheck.php -f /path/to/your/file.csv` to run against your *.csv file 
