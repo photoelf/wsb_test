@@ -7,7 +7,7 @@ class YandexVideoCest
     {
         $I->wantTo('Autotest to check the presence of a video trailer');
 
-        $I->amGoingTo('open https://yandex.ru/video/');
+        $I->amGoingTo('open yandex video');
         $I->amOnPage(YP::$URL);
 
         $I->amGoingTo('search “hurricane”');
