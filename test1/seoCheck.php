@@ -81,17 +81,13 @@ function getActualTags($url)
  */
 function isSeoUpdated($url, $title, $descr, $actualTags)
 {
-    $result = [];
-    if ($title === $actualTags['title']) {
-        $result['title'] = " [+] Title for $url is up to date\r\n";
-    } else {
-        $result['title'] = " [X] Title \"" . $actualTags['title'] . "\" for $url is old (\"$title\" is expected)\r\n";
+    $result = null;
+    if ($title !== $actualTags['title']) {
+        $result['title'] = "[X] Title \"" . $actualTags['title'] . "\" for $url is old (\"$title\" is expected)\r\n";
     };
 
-    if ($descr === $actualTags['descr']) {
-        $result['descr'] = " [+] Description for $url is up to date\r\n";
-    } else {
-        $result['descr'] = " [X] Description \"" . $actualTags['descr'] . "\" for $url is old (\"$descr\" is expected)\r\n";
+    if ($descr !== $actualTags['descr']) {
+        $result['descr'] = "[X] Description \"" . $actualTags['descr'] . "\" for $url is old (\"$descr\" is expected)\r\n";
     };
     return $result;
 }
@@ -102,7 +98,8 @@ $options = getopt($opts);
 if (isset($options['f'])) {
     $fileName = $options['f']; //if filename set through -f use new filename
 };
-
+$success = 0;
+$count = 0;
 try {
     foreach (getDataFromFile($fileName) as $item) { //get data from csv
         [
@@ -110,15 +107,15 @@ try {
             $title,
             $descr,
         ] = $item;
-
-        echo("[!] Checking the $url for seo data\r\n");
-
+        $count++;
         $actualTags = getActualTags($url); //get data from website
         $check = isSeoUpdated($url, $title, $descr, $actualTags); // compare data from csv with data from website
+        if ($check === null) {
+            $success++;
+        }
         echo($check['title'] . $check['descr']);
     }
+echo("$success of $count websites was checked successfully\r\n");
 } catch (Exception $e) {
     echo("Can't read from file $fileName\r\n" . $e);
 }
-
-echo("[!] Program is finished\r\n");
