@@ -16,7 +16,7 @@ class YandexVideoCest
         $I->clickWithLeftButton(YP::$searchButton);
 
         $I->amGoingTo('wait for the search results');
-        $I->seeElement(YP::$searchResulBlock); //assert that search results is loaded
+        $I->seeElement(YP::$searchResultBlock); //assert that search results is loaded
         $I->seeInTitle('Ураган');
 
         $I->amGoingTo('move the mouse over any video from the left block');
