@@ -20,7 +20,7 @@ use Page\YandexVideoMain as YVP; //simple PO implementation
  */
 class Tester extends Actor
 {
-    use _generated\AcceptanceTesterActions;
+    use _generated\TesterActions;
 
     public function amSearchForVideoAbout($query)
     {
