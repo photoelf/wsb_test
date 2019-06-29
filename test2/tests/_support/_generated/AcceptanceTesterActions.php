@@ -2853,7 +2853,7 @@ trait AcceptanceTesterActions
      *
      * ``` php
      * <?php
-     * // inside AcceptanceTester class:
+     * // inside Tester class:
      *
      * public function login()
      * {

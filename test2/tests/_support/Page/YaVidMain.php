@@ -11,7 +11,7 @@ class YaVidMain
     public static $searchButton = 'button.websearch-button.suggest2-form__button';
     public static $searchResultBlock = 'div.serp-list.serp-list_type_search';
     public static $videoBlock = 'div.serp-item_pos_3';
-    public static $videoPreview = 'div.serp-item_pos_3>div>div>div.thumb-image__preview.thumb-preview__target>video';
+    public static $videoPreview = 'div.serp-item_pos_3>a>div>div>div.thumb-image__preview.thumb-preview__target>video';
 
 
 }
