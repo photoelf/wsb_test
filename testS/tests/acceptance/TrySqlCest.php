@@ -4,6 +4,10 @@ use Page\TrySQL as TS;
 
 class TrySqlCest
 {
+    const SELECT_FROM_CUSTOMERS_WHERE_CITY_LONDON = 'SELECT * FROM Customers WHERE City = "London";';
+    const INSERT_INTO_CUSTOMERS_VALUES = 'INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country) VALUES ("Aname", "Aname", "Some 21", "Liss", "4606", "Noway");';
+    const UPDATE_CUSTOMERS_SET = 'UPDATE Customers SET CustomerName="Ivan", ContactName="Pony", Address="Some str. 0092", City="Luleå", PostalCode="0", Country="Lio" WHERE CustomerID="7";';
+
     public function giovanniIsOnLudovico(Tester $I)
     {
         $I->wantTo('Test that Giovanni lives on Via Ludovico');
@@ -19,7 +23,7 @@ class TrySqlCest
     {
         $I->wantTo('Test that we have 6 customers from London');
 
-        $I->amRunningTheSqlStatement('SELECT * FROM Customers WHERE City = "London";');
+        $I->amRunningTheSqlStatement(self::SELECT_FROM_CUSTOMERS_WHERE_CITY_LONDON);
 
         $I->amGoingTo('check if we have only 6 customers from London');
         $I->canSee('Number of Records: 6', TS::$resultCount); //Can be reduced to int via regEx
@@ -30,7 +34,7 @@ class TrySqlCest
     {
         $I->wantTo('Test new record insetrtion');
 
-        $I->amRunningTheSqlStatement('INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country) VALUES ("Aname", "Aname", "Some 21", "Liss", "4606", "Noway");');
+        $I->amRunningTheSqlStatement(self::INSERT_INTO_CUSTOMERS_VALUES);
         $I->seeDatabaseChangedSuccessfuly();
 
         $I->amGoingTo('check if it was created properly');
@@ -43,7 +47,7 @@ class TrySqlCest
     {
         $I->wantTo('Test old record updating');
 
-        $I->amRunningTheSqlStatement('UPDATE Customers SET CustomerName="Ivan", ContactName="Pony", Address="Some str. 0092", City="Luleå", PostalCode="0", Country="Lio" WHERE CustomerID="7";');
+        $I->amRunningTheSqlStatement(self::UPDATE_CUSTOMERS_SET);
         $I->seeDatabaseChangedSuccessfuly();
 
         $I->amGoingTo('check if it was updated properly');
