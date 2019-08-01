@@ -7,3 +7,4 @@
     * `cd test1`
     * `cd test2` 
     * `cd test3` 
+    * `cd testS` 
